@@ -17,7 +17,7 @@ export interface ComicListingTable {
 
     latest_chapter: string
 
-    last_updated: ColumnType<Date, string | undefined, never>
+    last_updated: ColumnType<Date, string | undefined, string | undefined>
 
     created_at: ColumnType<Date, string | undefined, never>
 }

@@ -8,6 +8,8 @@ import {
   FileMigrationProvider,
 } from 'kysely'
 import { Database } from './database_types'
+import { initDiscord } from './discord'
+import 'dotenv/config'
 
 async function migrateToLatest() {
     const db = new Kysely<Database>({
@@ -42,4 +44,5 @@ async function migrateToLatest() {
     await db.destroy()
 }
 
-migrateToLatest();
+migrateToLatest()
+    .then(() => initDiscord(process.env.DISCORD_TOKEN!, process.env.DISCORD_CLIENT_ID!));
